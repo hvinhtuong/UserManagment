@@ -1,5 +1,6 @@
 package com.example.usermanagementrestapiapplication.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.usermanagementrestapiapplication.entify.User;
 import com.example.usermanagementrestapiapplication.model.Dto.UserDto;
 import com.example.usermanagementrestapiapplication.service.UserService;
@@ -20,8 +21,9 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById() {
-        return null;
+    public ResponseEntity<?> getUserById(@PathVariable int id) {
+        UserDto result = userService.getUserById(id);
+        return ResponseEntity.ok(result);
     }
     @PostMapping ("")
     public ResponseEntity<?> createUser() {
