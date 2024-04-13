@@ -36,4 +36,15 @@ public class UserServiceImpl implements UserService{
         }
         return null;
     }
+
+    @Override
+    public List<UserDto> searchUser(String keyword) {
+        List<UserDto> result = new ArrayList<>();
+        for (User user : user) {
+            if (user.getName().contains(keyword)) {
+                result.add(UserMapper.toUserDto(user));
+            }
+        }
+        return result;
+    }
 }
