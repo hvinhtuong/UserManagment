@@ -1,6 +1,7 @@
 package com.example.usermanagementrestapiapplication.service;
 
 import com.example.usermanagementrestapiapplication.entify.User;
+import com.example.usermanagementrestapiapplication.exception.NotFoundException;
 import com.example.usermanagementrestapiapplication.model.Dto.UserDto;
 import com.example.usermanagementrestapiapplication.model.mapper.UserMapper;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService{
                 return UserMapper.toUserDto(user);
             }
         }
-        return null;
+        throw new NotFoundException("User does not exist!" );
     }
 
     @Override
